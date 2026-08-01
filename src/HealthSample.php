@@ -1,0 +1,2 @@
+<?php
+declare(strict_types=1);namespace Pam\Native\Health;use InvalidArgumentException;final readonly class HealthSample{public function __construct(public string$identifier,public HealthDataType$type,public float$value,public int$startMillis,public int$endMillis,public string$source=''){if(!is_finite($value)||$startMillis<0||$endMillis<$startMillis)throw new InvalidArgumentException('Invalid health sample bounds.');}}
