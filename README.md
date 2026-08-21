@@ -1,5 +1,21 @@
 # PAM Native Health
 
+## Start here
+
+This is a Composer extension for PAM Native. Install the PAM Runtime, create a native project, and then add this package through PAM’s verified Composer toolchain:
+
+```bash
+curl --proto '=https' --proto-redir '=https' --tlsv1.2 \
+    --connect-timeout 15 --max-time 60 --max-filesize 1048576 -fsSL \
+    https://github.com/push-in/pam/releases/latest/download/install.sh | sh
+
+pam init my-app --template native
+cd my-app
+pam composer require pushinbr/pam-native-health
+pam doctor --fix
+```
+
+
 Health Connect 1.1 and HealthKit access for steps, heart rate, weight, active calories and sleep. Authorization is granular and requested only for enum types supplied by the app.
 
 HealthKit intentionally does not reveal denied read access, so the API exposes `needsAuthorization()` rather than claiming a read permission is granted. Empty reads may mean no data or no accessible data. Treat all health data as sensitive, minimize retention, and never log samples by default.
